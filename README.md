@@ -3,9 +3,13 @@ This project will demonstrate how to setup  a Prometheus monitoring setup and ho
 
 # Step 01
 Clone the reporsiory and connect with your Kubernetes cluster (You can export the kubeconfig.yaml and connect using export KUBECONFIG=kubeconfig.yaml)
+![image](https://github.com/miyurumadu/kuberneteswithprometheusandgrafana/assets/18532502/f1cee70c-2249-472d-b1b4-787e827dff51)
 
 # Step 02
 Create a Config Map for Prometheus including the details of the site which is going to be monitored using blackbox exporter
+```
+kubectl create -f configmap.yaml
+```
 
 # Step 03
 Create a new Namespace as monitoring.
@@ -19,13 +23,19 @@ kubectl create -f configmap.yaml
 
 # Step 04
 Create a deployment as well as a service for Grafana and test the Grafana access.
+```
 kubectl create  -f prometheus-deployment.yaml 
+```
 You can check the created deployment using the following command
+```
 kubectl get deployments --namespace=monitoring
+```
 
 # Step 05
 Create the Blackbox exporter deployment and deploy it as a service 
+```
 kubectl create  -f blackbox-exporter.yaml 
+```
 
 # Step 06
 Check the pods running
@@ -42,9 +52,10 @@ Get the external-ip address to access the services
 # Step 09
 Combine the externalip:nodeport to access the Prometheus and Grafana Services
 See the below example
+```
 http://85.215.193.215:30000  Prometheus
 http:// 85.215.193.215:30748 Grafana
-
+```
 
 # Step 10
 Now go to Prometheus targets and you will see our mail.ionos.con monitoring job status
