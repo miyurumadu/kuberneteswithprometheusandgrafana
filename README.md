@@ -9,9 +9,13 @@ Create a Config Map for Prometheus including the details of the site which is go
 
 # Step 03
 Create a new Namespace as monitoring.
+```
 kubectl create namespace monitoring
+```
 Create the prometheus deployment and service and try to access using nodeport
+```
 kubectl create -f configmap.yaml
+```
 
 # Step 04
 Create a deployment as well as a service for Grafana and test the Grafana access.
